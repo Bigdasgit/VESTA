@@ -93,9 +93,7 @@ class gtnet_module(nn.Module):
                     adp = self.gc(idx, adjfix)
             else:
                 adp = self.predefined_A
-        print(input.shape)
         x = self.start_conv(input)
-        print(x.shape)
         skip = self.skip0(F.dropout(input, self.dropout, training=self.training))
         for i in range(self.layers):
             residual = x
@@ -108,7 +106,6 @@ class gtnet_module(nn.Module):
             s = x
             s = self.skip_convs[i](s)
             skip = s + skip
-            print(skip.shape)
             if self.gcn_true:
                 x = self.gconv1[i](x, adp)+self.gconv2[i](x, adp.transpose(1,0))
             else:
@@ -119,7 +116,6 @@ class gtnet_module(nn.Module):
             else:
                 x = self.norm[i](x,idx)
         skip = self.skipE(x) + skip
-        print(skip.shape)
         return skip
     
 class gtnet(nn.Module):
