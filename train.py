@@ -19,12 +19,12 @@ def str_to_bool(value):
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--device',type=str,default='cuda:1',help='')
-parser.add_argument('--data',type=str,default='data/VDSKB_v1',help='data path')
-parser.add_argument('--adj_data', type=str,default='data/VDSKB_v1/adj_mx.pkl',help='adj data path')
+parser.add_argument('--data',type=str,default='data/traffic',help='data path')
+parser.add_argument('--adj_data', type=str,default='data/traffic/adj_mx.pkl',help='adj data path')
 
 parser.add_argument('--use_additional_model',action='store_true')
 parser.add_argument('--add_num_nodes',type=int,default=44,help='number of nodes/variables')
-parser.add_argument('--add_data',type=str,default='data/SEARCH_v1_3',help='data path')
+parser.add_argument('--add_data',type=str,default='data/terms',help='data path')
 parser.add_argument('--add_seq_in_len',type=int,default=3,help='input sequence length')
 
 parser.add_argument('--gcn_true', type=str_to_bool, default=True, help='whether to add graph convolution layer')
